@@ -36,3 +36,66 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  box-sizing: border-box;
+  outline: none;
+  overflow: auto;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 150px 0;
+  text-align: left;
+}
+
+.header_text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+}
+
+.heading {
+  font-size: 22px;
+}
+
+.form_wrapper {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form_input {
+  margin-bottom: 20px;
+}
+
+.form_button {
+  width: 100%;
+}

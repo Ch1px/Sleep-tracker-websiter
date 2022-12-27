@@ -18,15 +18,6 @@ Parse.serverURL = host_url;
 
 function App() {
 
-	const fetchAllUsers = async () => {
-		const query = new Parse.Query("User")
-		const allUsersGet = await query.find();
-
-		allUsersGet.forEach((items) => {
-			console.log(items)
-		})
-	}
-	fetchAllUsers()
 
 return (
 	<Router>
