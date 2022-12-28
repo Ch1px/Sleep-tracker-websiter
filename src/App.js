@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/navBar';
 import { BrowserRouter as Router, Routes, Route}
 	from 'react-router-dom';
 import Home from './pages';
@@ -17,8 +17,7 @@ Parse.initialize(app_id, javascript_key);
 Parse.serverURL = host_url;
 
 function App() {
-
-
+	
 return (
 	<Router>
 	<Navbar />
