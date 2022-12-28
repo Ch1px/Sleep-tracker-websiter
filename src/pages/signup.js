@@ -17,9 +17,7 @@ function createUser(email, username, password) {
     function(user) {
       // Sign up was successful
       console.log("Successfully created user:", user);
-      alert(
-        `Success! User ${username} was successfully created!`
-      );
+      alert(`Success! User ${username} was successfully created!`);
       return true;
     },
     function(error) {
@@ -36,11 +34,17 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState ('');
 
   // Functions used by the screen components
   const doSignUp = async function () {
       // Since the signUp method returns a Promise, we need to call it using await
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+      } else {
       await createUser(email, username, password);
+      }
   };
 
   return (
@@ -60,7 +64,7 @@ const SignUp = () => {
           <Input
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            placeholder="Username"
+            placeholder="Create Username"
             size="large"
 			      type="username"
             className="form_input"
@@ -68,7 +72,15 @@ const SignUp = () => {
           <Input
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="Password"
+            placeholder="Create Password"
+            size="large"
+            type="password"
+            className="form_input"
+          />
+          <Input
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            placeholder="Confirm Password"
             size="large"
             type="password"
             className="form_input"
@@ -79,11 +91,12 @@ const SignUp = () => {
             onClick={() => doSignUp()}
             type="primary"
             className="form_button"
-            color={'#208AEC'}
             size="large"
           >
             Sign Up
           </Button>
+          <Divider />
+          <p className="form_hint">Take me back to <a className="form__link" href="/log-in">Log in</a></p>
         </div>
       </div>
     </div>

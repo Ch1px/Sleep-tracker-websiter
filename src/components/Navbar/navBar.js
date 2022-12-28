@@ -1,6 +1,24 @@
 import React from "react";
 import { Nav, NavLink, NavMenu }
 	from "./NavbarElements";
+import { useState } from 'react';
+import UserLogin from "../../pages/userLogin";
+
+const AuthButton = () => {
+	// Initialize state variable to track if user is signed in
+	const [isSignedIn, setIsSignedIn] = useState(false);
+  
+	// Toggle the isSignedIn state variable when the button is clicked
+	const handleClick = () => {
+	  setIsSignedIn(!isSignedIn);
+	};
+  
+	return (
+	  <button onClick={handleClick}>
+		{isSignedIn ? 'Sign Out' : 'Sign In'}
+	  </button>
+	);
+  };
 
 const Navbar = () => {
 return (
@@ -14,15 +32,16 @@ return (
 			About
 		</NavLink>
 		<NavLink to="/tracker">
-			View Sleep
+			Journey
 		</NavLink>
 		<NavLink to="/contact">
 			Contact Us
 		</NavLink>
 		</NavMenu>
-		<NavLink to="/sign-up" >
-			Sign up
+		<NavLink to="/log-in" >
+			Sign in
 		</NavLink>
+		{AuthButton()}
 	</Nav>
 	</>
 );

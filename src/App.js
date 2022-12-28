@@ -8,6 +8,7 @@ import About from './pages/about';
 import Tracker from './pages/tracker';
 import SignUp from './pages/signup';
 import Contact from './pages/contact';
+import LoginForm from './pages/userLogin';
 import Parse from 'parse/dist/parse.min.js';
 
 const app_id = process.env.REACT_APP_PARSE_APP_ID;
@@ -17,8 +18,10 @@ Parse.initialize(app_id, javascript_key);
 Parse.serverURL = host_url;
 
 function App() {
-	
+
+
 return (
+
 	<Router>
 	<Navbar />
 	<Routes>
@@ -26,6 +29,7 @@ return (
 		<Route path='/about' element={<About/>} />
 		<Route path='/contact' element={<Contact/>} />
 		<Route path='/tracker' element={<Tracker/>} />
+		<Route path='/log-in' element={<LoginForm/>}/>
 		<Route path='/sign-up' element={<SignUp/>} />
 	</Routes>
 	</Router>
