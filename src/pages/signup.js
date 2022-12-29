@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Parse from 'parse/dist/parse.min.js';
 
 import { Button, Divider, Input } from 'antd';
 
 
-function createUser(email, username, password) {
+/*function createUser(email, username, password) {
   // Create a new Parse.User object
   const user = new Parse.User();
   user.set("email", email);
@@ -27,24 +28,22 @@ function createUser(email, username, password) {
       return false;
     }
   );
-}
+} */
 
 const SignUp = () => {
+  const navigate = useNavigate();
   // State variables
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState ('');
+  //const [confirmPassword, setConfirmPassword] = useState('');
 
-  // Functions used by the screen components
-  const doSignUp = async function () {
-      // Since the signUp method returns a Promise, we need to call it using await
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-      } else {
-      await createUser(email, username, password);
-      }
+  const handleSubmit = (e) => {
+    localStorage.setItem("email", JSON.stringify(email));
+    localStorage.setItem("username", JSON.stringify(username));
+    localStorage.setItem("password", JSON.stringify(password));
+    //localStorage.setItem("user", JSON.stringify(confirmPassword));
+    navigate("/log-in")
   };
 
   return (
@@ -55,32 +54,24 @@ const SignUp = () => {
         <div className="form_wrapper">
         <Input
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             size="large"
-			      type="email"
+			      type="text"
             className="form_input"
           />
           <Input
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Create Username"
             size="large"
-			      type="username"
+			      type="text"
             className="form_input"
           />
           <Input
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Create Password"
-            size="large"
-            type="password"
-            className="form_input"
-          />
-          <Input
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-            placeholder="Confirm Password"
             size="large"
             type="password"
             className="form_input"
@@ -88,7 +79,7 @@ const SignUp = () => {
         </div>
         <div className="form_buttons">
           <Button
-            onClick={() => doSignUp()}
+            onClick={() => handleSubmit()}
             type="primary"
             className="form_button"
             size="large"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Parse from 'parse/dist/parse.min.js';
+import { Navigate } from 'react-router-dom';
 
 import { Button, Divider, Input } from 'antd';
 
@@ -21,6 +22,7 @@ export const getCurrentUser = async function () {
     const [currentUser, setCurrentUser] = useState(null);
   
     const doUserLogIn = async function () {
+    
       // Note that these values come from state variables that we've declared before
       try {
         const loggedInUser = await Parse.User.logIn(email, password);
@@ -105,7 +107,7 @@ export const getCurrentUser = async function () {
                 Log In
               </Button>
               <Divider/>
-              <p className="form_hint">Don't have an account? <a className="form__link" href="sign-up">Sign up</a></p>
+              <p className="form_hint">Don't have an account? <a className="form__link" href="/sign-up">Sign up</a></p>
             </div>
           </div>
         )}
